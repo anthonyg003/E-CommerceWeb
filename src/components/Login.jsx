@@ -1,10 +1,12 @@
 import { React, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { login } from "../api";
 import "./login.css";
 
-const Login = () => {
+const Login = ({ setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     try {
@@ -13,8 +15,12 @@ const Login = () => {
       const loggedInUser = await login(username, password);
 
       console.log("logged in ==>", loggedInUser);
+      setToken(loggedInUser.token);
+
       setUsername("");
       setPassword("");
+
+      navigate("/");
     } catch (error) {
       console.error(error);
     }

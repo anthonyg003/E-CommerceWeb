@@ -1,11 +1,13 @@
 import { React, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const Register = ({ setToken }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     try {
@@ -18,6 +20,8 @@ const Register = () => {
       setUsername("");
       setEmail("");
       setPassword("");
+
+      navigate("/");
     } catch (error) {
       console.error("There was an error handleRegister", error);
     }
