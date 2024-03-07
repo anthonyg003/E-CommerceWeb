@@ -8,9 +8,28 @@ export const login = async (username, password) => {
       body: JSON.stringify({ username, password }),
     });
     const result = await response.json();
-    console.log(result);
     return result;
   } catch (error) {
     console.error("There was an error /POST login", error);
+  }
+};
+
+export const fetchAllProducts = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/products`);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("There was an error /GET all products", error);
+  }
+};
+
+export const fetchSingleProduct = async (id) => {
+  try {
+    const response = await fetch(`${BASE_URL}/products/${id}`);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("There was an error /GET single product");
   }
 };
