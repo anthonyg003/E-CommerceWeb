@@ -20,13 +20,16 @@ const NavBar = ({ token, setToken }) => {
             </Link>
             {token ? (
               <>
+                <Link className="nav-link" to="/cart">
+                  Cart
+                </Link>
                 <button onClick={handleLogOut}>Log Out</button>
               </>
             ) : (
               <>
-                <Link className="nav-link" to="/register">
+                {/* <Link className="nav-link" to="/register">
                   Sign Up
-                </Link>
+                </Link> */}
                 <Link className="nav-link" to="/login">
                   Sign In
                 </Link>

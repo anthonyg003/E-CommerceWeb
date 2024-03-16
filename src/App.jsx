@@ -6,16 +6,29 @@ import Register from "./components/Register";
 import NavBar from "./components/NavBar";
 import Products from "./components/Products";
 import SingleProduct from "./components/SingleProduct";
+import Cart from "./components/Cart";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart" || []))
+  );
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user" || null))
+  );
 
   useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);
+      const userObj = JSON.stringify(user);
+      localStorage.setItem("user", userObj);
+      const cartObj = JSON.stringify(cart);
+      localStorage.setItem("cart", cartObj);
     } else {
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("cart");
     }
   }, [token]);
 
@@ -36,10 +49,27 @@ function App() {
       <div>
         <NavBar token={token} setToken={setToken} />
         <Routes>
-          <Route path="/" element={<Products products={products} />} />
-          <Route path="/:id" element={<SingleProduct />} />
-          <Route path="/login" element={<Login setToken={setToken} />} />
-          <Route path="/register" element={<Register setToken={setToken} />} />
+          <Route
+            path="/"
+            element={
+              <Products products={products} cart={cart} setCart={setCart} />
+            }
+          />
+          <Route
+            path="/:id"
+            element={<SingleProduct cart={cart} setCart={setCart} />}
+          />
+          <Route
+            path="/login"
+            element={
+              <Login setToken={setToken} setUser={setUser} setCart={setCart} />
+            }
+          />
+          {/* <Route path="/register" element={<Register setToken={setToken} />} /> */}
+          <Route
+            path="/cart"
+            element={<Cart cart={cart} products={products} setCart={setCart} />}
+          />
         </Routes>
       </div>
     </>
