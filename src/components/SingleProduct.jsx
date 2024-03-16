@@ -3,8 +3,8 @@ import { fetchSingleProduct } from "../api";
 import { useParams } from "react-router-dom";
 import ProductCardItem from "./ProductCardItem";
 
-const SingleProduct = () => {
-  const [product, setProduct] = useState();
+const SingleProduct = ({ cart, setCart }) => {
+  const [product, setProduct] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -19,7 +19,14 @@ const SingleProduct = () => {
     return <h1>Loading ...</h1>;
   }
 
-  return <ProductCardItem product={product} isSingleProduct />;
+  return (
+    <ProductCardItem
+      product={product}
+      isSingleProduct
+      cart={cart}
+      setCart={setCart}
+    />
+  );
 };
 
 export default SingleProduct;
