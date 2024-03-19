@@ -8,12 +8,10 @@ const Cart = ({ cart, products, setCart }) => {
   console.log("cart -->", cart);
   return (
     <div>
-      <h2>Cart</h2>
+      <h1>Cart</h1>
       {cart.map((item) => {
         const productItem = getAllItemDetails(item);
-        {
-          console.log("productItem -->", productItem);
-        }
+
         return (
           productItem && (
             <CartItemCard

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchSingleProduct } from "../api";
 import { useParams } from "react-router-dom";
 import ProductCardItem from "./ProductCardItem";
+import "./singleProduct.css";
 
 const SingleProduct = ({ cart, setCart }) => {
   const [product, setProduct] = useState(null);
@@ -20,12 +21,14 @@ const SingleProduct = ({ cart, setCart }) => {
   }
 
   return (
-    <ProductCardItem
-      product={product}
-      isSingleProduct
-      cart={cart}
-      setCart={setCart}
-    />
+    <div className="product">
+      <ProductCardItem
+        product={product}
+        isSingleProduct
+        cart={cart}
+        setCart={setCart}
+      />
+    </div>
   );
 };
 

@@ -1,18 +1,23 @@
-form {
-  max-width: 300px;
-  margin: 0 auto;
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.loginForm {
+  /* max-width: 300px; */
+  /* margin: 0 auto; */
   padding: 20px;
+  width: 50%;
   border: 1px #ddd;
   border-radius: 5px;
   background-color: rgb(228, 226, 226);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-div {
-  margin-bottom: 15px;
-}
-
-label {
+.username,
+.password {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
@@ -26,7 +31,7 @@ input {
   font-size: 16px;
   margin-top: 5px;
 }
-button {
+.loginButton {
   background-color: lightpink;
   color: #fff;
   font-size: 16px;
@@ -35,6 +40,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.loginButton:hover {
   background-color: rgb(245, 132, 149);
 }

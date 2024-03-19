@@ -1,11 +1,15 @@
 import React from "react";
+import "./cart.css";
 
 const CartItemCard = ({ productItem, quantity }) => {
   return (
     <div>
       <div>
-        <h1>cart item</h1>
-        <img src={productItem.image} alt={productItem.title} />
+        <img
+          src={productItem.image}
+          alt={productItem.title}
+          className="cart-img"
+        />
       </div>
       <div>
         <h3>{productItem.title}</h3>
