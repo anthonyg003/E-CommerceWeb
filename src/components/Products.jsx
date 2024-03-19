@@ -3,8 +3,8 @@ import ProductCardItem from "./ProductCardItem";
 const Products = ({ products, cart, setCart }) => {
   return (
     <>
-      <div>
-        <h1>Products</h1>
+      <h1>Products</h1>
+      <div className="products">
         {products.map((product) => {
           return (
             <ProductCardItem

@@ -34,7 +34,7 @@ const Login = ({ setToken, setUser, setCart }) => {
 
   return (
     <>
-      <div>
+      <div className="login-container">
         <form className="loginForm" onSubmit={handleLogin}>
           <h2>Sign In</h2>
           <label className="username">
@@ -53,7 +53,7 @@ const Login = ({ setToken, setUser, setCart }) => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          <button>Sign In</button>
+          <button className="loginButton">Sign In</button>
         </form>
       </div>
     </>
