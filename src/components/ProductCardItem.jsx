@@ -2,6 +2,7 @@ import React from "react";
 import "./productCard.css";
 import "./singleProduct.css";
 import { useNavigate, Link } from "react-router-dom";
+import { addToCart } from "../utils/helpers";
 
 const ProductCardItem = ({ product, isSingleProduct, cart, setCart }) => {
   // const navigate = useNavigate();
@@ -11,19 +12,20 @@ const ProductCardItem = ({ product, isSingleProduct, cart, setCart }) => {
 
   const handleAddToCart = () => {
     const productId = product.id;
-    const existingCartItem = cart.findIndex(
-      (item) => item.productId === productId
-    );
-    if (existingCartItem !== -1) {
-      const updatedCart = [...cart];
-      updatedCart[existingCartItem].quantity += 1;
-      setCart(updatedCart);
-      console.log("cart --->", cart);
-    } else {
-      const newItem = { productId, quantity: 1 };
-      setCart((prevCart) => [...prevCart, newItem]);
-      console.log("cart --->", cart);
-    }
+    setCart((prevCart) => addToCart(prevCart, productId));
+    // const existingCartItem = cart.findIndex(
+    //   (item) => item.productId === productId
+    // );
+    // if (existingCartItem !== -1) {
+    //   const updatedCart = [...cart];
+    //   updatedCart[existingCartItem].quantity += 1;
+    //   setCart(updatedCart);
+    //   console.log("cart --->", cart);
+    // } else {
+    //   const newItem = { productId, quantity: 1 };
+    //   setCart((prevCart) => [...prevCart, newItem]);
+    //   console.log("cart --->", cart);
+    // }
   };
   return (
     <div>
@@ -35,7 +37,6 @@ const ProductCardItem = ({ product, isSingleProduct, cart, setCart }) => {
               alt={product.title}
               className="single-img"
             />
-
             <h1 className="product-title">{product.title}</h1>
             <p className="price">{product.price}</p>
             <p>{product.description}</p>

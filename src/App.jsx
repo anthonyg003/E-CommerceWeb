@@ -7,6 +7,8 @@ import NavBar from "./components/NavBar";
 import Products from "./components/Products";
 import SingleProduct from "./components/SingleProduct";
 import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
+import Order from "./components/Order";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -30,7 +32,7 @@ function App() {
       localStorage.removeItem("user");
       localStorage.removeItem("cart");
     }
-  }, [token]);
+  }, [token, cart, user]);
 
   useEffect(() => {
     const getAllProducts = async () => {
@@ -70,6 +72,8 @@ function App() {
             path="/cart"
             element={<Cart cart={cart} products={products} setCart={setCart} />}
           />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order" element={<Order />} />
         </Routes>
       </div>
     </>
