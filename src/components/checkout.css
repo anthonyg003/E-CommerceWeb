@@ -1,0 +1,41 @@
+.checkoutContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin: 5px 0;
+  border: 2px solid #000000;
+  border-radius: 10px;
+}
+
+select {
+  margin-left: 5px;
+}
+
+.shipping {
+  margin: auto;
+  max-width: 60%;
+}
+
+.billing {
+  margin: auto;
+  max-width: 60%;
+}
+
+.security {
+  width: 20%;
+}
+
+.securityLabel {
+  margin-left: 15px;
+}
+
+.orderButton {
+  margin: 20px;
+  width: 120px;
+  height: 30px;
+  border: 10px none;
+  border-radius: 5px;
+  background-color: lightgreen;
+}
