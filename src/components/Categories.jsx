@@ -1,15 +1,23 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import ProductCardItem from "./ProductCardItem";
 import CategoriesDropdown from "./CategoriesDropdown";
+import "./productCard.css";
 
-const Products = ({
+const Categories = ({
   products,
   setProducts,
-  cart,
   setCart,
+  cart,
   selectedOption,
   setSelectedOption,
 }) => {
+  const { category } = useParams();
+
+  const title = selectedOption;
+
+  const capatalized = title.charAt(0).toUpperCase() + title.slice(1);
+
   const handleDecending = () => {
     const sortedProducts = [...products].sort(
       (a, b) => parseFloat(a.price) - parseFloat(b.price)
@@ -23,29 +31,30 @@ const Products = ({
     setProducts(sortedProducts);
   };
 
+  const filteredCategories = products.map((product) => {
+    if (product.category === category) {
+      return (
+        <ProductCardItem
+          key={product.id}
+          product={product}
+          setCart={setCart}
+          cart={cart}
+        />
+      );
+    }
+  });
   return (
     <>
-      <h1>Products</h1>
+      <h1>{capatalized}</h1>
       <button onClick={handleDecending}>Low to High</button>
       <button onClick={handleAscending}>High to Low</button>
       <CategoriesDropdown
         selectedOption={selectedOption}
         setSelectedOption={setSelectedOption}
       />
-      <div className="products">
-        {products.map((product) => {
-          return (
-            <ProductCardItem
-              key={product.id}
-              product={product}
-              cart={cart}
-              setCart={setCart}
-            />
-          );
-        })}
-      </div>
+      <div className="products">{filteredCategories}</div>{" "}
     </>
   );
 };
 
-export default Products;
+export default Categories;

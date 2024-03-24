@@ -1,32 +1,15 @@
 import React from "react";
 import "./productCard.css";
 import "./singleProduct.css";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { addToCart } from "../utils/helpers";
 
 const ProductCardItem = ({ product, isSingleProduct, cart, setCart }) => {
-  // const navigate = useNavigate();
-  // const handleSingleView = () => {
-  //   navigate(`${product.id}`);
-  // };
-
   const handleAddToCart = () => {
     const productId = product.id;
     setCart((prevCart) => addToCart(prevCart, productId));
-    // const existingCartItem = cart.findIndex(
-    //   (item) => item.productId === productId
-    // );
-    // if (existingCartItem !== -1) {
-    //   const updatedCart = [...cart];
-    //   updatedCart[existingCartItem].quantity += 1;
-    //   setCart(updatedCart);
-    //   console.log("cart --->", cart);
-    // } else {
-    //   const newItem = { productId, quantity: 1 };
-    //   setCart((prevCart) => [...prevCart, newItem]);
-    //   console.log("cart --->", cart);
-    // }
   };
+
   return (
     <div>
       {isSingleProduct ? (
@@ -65,21 +48,6 @@ const ProductCardItem = ({ product, isSingleProduct, cart, setCart }) => {
           </div>
         </>
       )}
-
-      {/* <Link to={`/${product.id}`}>
-          <img src={product.image} alt={product.title} />
-        </Link>
-        <Link to={`/${product.id}`}>
-          <p className="product-title">{product.title}</p>
-        </Link>
-        <p className="price">{product.price}</p>
-        <button className="card button" onClick={handleAddToCart}>
-          Add To Cart
-        </button> */}
-      {/* {!isSingleProduct && (
-          <button onClick={handleSingleView}>View Item</button>
-        )} */}
-      {/* </div> */}
     </div>
   );
 };
