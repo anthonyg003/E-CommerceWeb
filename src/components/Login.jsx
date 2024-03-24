@@ -16,9 +16,6 @@ const Login = ({ setToken, setUser, setCart }) => {
       const user = await fetchAllUsers(username);
       const userCart = await fetchUserCart(user.id);
 
-      console.log("logged in ==>", loggedInUser);
-      console.log("user -->", user);
-      console.log("cart -->", userCart);
       setToken(loggedInUser.token);
       setUser(user);
       setCart(userCart);

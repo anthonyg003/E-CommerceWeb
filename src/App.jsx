@@ -9,6 +9,8 @@ import SingleProduct from "./components/SingleProduct";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import Order from "./components/Order";
+import Categories from "./components/Categories";
+import CategoriesDropdown from "./components/CategoriesDropdown";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -19,6 +21,7 @@ function App() {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user" || null))
   );
+  const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
     if (token) {
@@ -50,9 +53,23 @@ function App() {
     <>
       <div>
         <NavBar token={token} setToken={setToken} />
+        {/* <CategoriesDropdown />  */}
         <Routes>
           <Route
             path="/"
+            element={
+              <Products
+                setProducts={setProducts}
+                products={products}
+                cart={cart}
+                setCart={setCart}
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
+              />
+            }
+          />
+          <Route
+            path="/products?sort=desc"
             element={
               <Products products={products} cart={cart} setCart={setCart} />
             }
@@ -74,6 +91,19 @@ function App() {
           />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order" element={<Order />} />
+          <Route
+            path="/categories/:category"
+            element={
+              <Categories
+                products={products}
+                setProducts={setProducts}
+                setCart={setCart}
+                cart={cart}
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
+              />
+            }
+          />
         </Routes>
       </div>
     </>

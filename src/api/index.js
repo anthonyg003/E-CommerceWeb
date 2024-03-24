@@ -38,7 +38,6 @@ export const fetchUserCart = async (id) => {
   try {
     const response = await fetch(`${BASE_URL}/carts/${id}`);
     const result = await response.json();
-    console.log("Cart -->", result);
     return result.products;
   } catch (error) {
     console.error("There was an error /GET user cart", error);
@@ -53,5 +52,16 @@ export const fetchAllUsers = async (username) => {
     return userData;
   } catch (error) {
     console.error("There was an error /GET all users", error);
+  }
+};
+
+export const fetchDescProducts = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/products?sort=desc`);
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error(error);
   }
 };
