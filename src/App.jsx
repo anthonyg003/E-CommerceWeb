@@ -10,7 +10,6 @@ import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import Order from "./components/Order";
 import Categories from "./components/Categories";
-import CategoriesDropdown from "./components/CategoriesDropdown";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -53,7 +52,6 @@ function App() {
     <>
       <div>
         <NavBar token={token} setToken={setToken} />
-        {/* <CategoriesDropdown />  */}
         <Routes>
           <Route
             path="/"
@@ -65,18 +63,15 @@ function App() {
                 setCart={setCart}
                 selectedOption={selectedOption}
                 setSelectedOption={setSelectedOption}
+                token={token}
               />
             }
           />
           <Route
-            path="/products?sort=desc"
-            element={
-              <Products products={products} cart={cart} setCart={setCart} />
-            }
-          />
-          <Route
             path="/:id"
-            element={<SingleProduct cart={cart} setCart={setCart} />}
+            element={
+              <SingleProduct cart={cart} setCart={setCart} token={token} />
+            }
           />
           <Route
             path="/login"
@@ -101,6 +96,7 @@ function App() {
                 cart={cart}
                 selectedOption={selectedOption}
                 setSelectedOption={setSelectedOption}
+                token={token}
               />
             }
           />

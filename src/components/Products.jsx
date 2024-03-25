@@ -9,6 +9,7 @@ const Products = ({
   setCart,
   selectedOption,
   setSelectedOption,
+  token,
 }) => {
   const handleDecending = () => {
     const sortedProducts = [...products].sort(
@@ -25,24 +26,36 @@ const Products = ({
 
   return (
     <>
-      <h1>Products</h1>
-      <button onClick={handleDecending}>Low to High</button>
-      <button onClick={handleAscending}>High to Low</button>
-      <CategoriesDropdown
-        selectedOption={selectedOption}
-        setSelectedOption={setSelectedOption}
-      />
-      <div className="products">
-        {products.map((product) => {
-          return (
-            <ProductCardItem
-              key={product.id}
-              product={product}
-              cart={cart}
-              setCart={setCart}
-            />
-          );
-        })}
+      <div className="productsContainer">
+        <h1 className="title">Products</h1>
+        <div className="sort">
+          <h3>Sort By</h3>
+          <button onClick={handleDecending} className="sortButton">
+            Low to High
+          </button>
+          <button onClick={handleAscending} className="sortButton">
+            High to Low
+          </button>
+        </div>
+        <div className="dropdown">
+          <CategoriesDropdown
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+          />
+        </div>
+        <div className="products">
+          {products.map((product) => {
+            return (
+              <ProductCardItem
+                key={product.id}
+                product={product}
+                cart={cart}
+                setCart={setCart}
+                token={token}
+              />
+            );
+          })}
+        </div>
       </div>
     </>
   );

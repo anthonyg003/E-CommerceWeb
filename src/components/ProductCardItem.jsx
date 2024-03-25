@@ -4,7 +4,13 @@ import "./singleProduct.css";
 import { Link } from "react-router-dom";
 import { addToCart } from "../utils/helpers";
 
-const ProductCardItem = ({ product, isSingleProduct, cart, setCart }) => {
+const ProductCardItem = ({
+  product,
+  isSingleProduct,
+  cart,
+  setCart,
+  token,
+}) => {
   const handleAddToCart = () => {
     const productId = product.id;
     setCart((prevCart) => addToCart(prevCart, productId));
@@ -23,9 +29,13 @@ const ProductCardItem = ({ product, isSingleProduct, cart, setCart }) => {
             <h1 className="product-title">{product.title}</h1>
             <p className="price">{product.price}</p>
             <p>{product.description}</p>
-            <button className="cardButton" onClick={handleAddToCart}>
-              Add To Cart
-            </button>
+            {token ? (
+              <button className="cardButton" onClick={handleAddToCart}>
+                Add To Cart
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </>
       ) : (
@@ -42,9 +52,13 @@ const ProductCardItem = ({ product, isSingleProduct, cart, setCart }) => {
               <p className="products-title">{product.title}</p>
             </Link>
             <p className="prices">{product.price}</p>
-            <button className="cardButtons" onClick={handleAddToCart}>
-              Add To Cart
-            </button>
+            {token ? (
+              <button className="cardButton" onClick={handleAddToCart}>
+                Add To Cart
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </>
       )}

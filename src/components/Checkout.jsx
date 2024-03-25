@@ -4,8 +4,28 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
-  const [months, setMonths] = useState(1);
+  const [formData, setFormData] = useState({
+    name: "",
+    street: "",
+    city: "",
+    state: "",
+    zipCode: "",
+    cardName: "",
+    cardNumber: "",
+    months: 1,
+    years: "",
+    security: "",
+  });
+
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   const handleCheckout = () => {
     navigate("/order");
@@ -19,36 +39,47 @@ const Checkout = () => {
           <div className="shipping">
             <h2>Shipping Info</h2>
             <label htmlFor="name">
-              Full Name <input type="text" className="name" />
+              Full Name{" "}
+              <input type="text" className="name" onChange={handleChange} />
             </label>
             <label htmlFor="street">
-              Street <input type="text" className="street" />
+              Street{" "}
+              <input type="text" className="street" onChange={handleChange} />
             </label>
             <label htmlFor="city">
-              City <input type="text" className="city" />
+              City{" "}
+              <input type="text" className="city" onChange={handleChange} />
             </label>
             <label htmlFor="state">
-              State <input type="text" className="state" />
+              State{" "}
+              <input type="text" className="state" onChange={handleChange} />
             </label>
             <label htmlFor="zipCode">
-              Zip Code <input type="text" className="zipCode" />
+              Zip Code{" "}
+              <input type="text" className="zipCode" onChange={handleChange} />
             </label>
           </div>
           <div className="billing">
             <h2>Billing Info</h2>
             <label htmlFor="cardName">
-              Name on card <input type="text" className="cardName" />
+              Name on card{" "}
+              <input type="text" className="cardName" onChange={handleChange} />
             </label>
             <label htmlFor="cardNumber">
-              Card Number <input type="text" className="cardNumber" />
+              Card Number{" "}
+              <input
+                type="text"
+                className="cardNumber"
+                onChange={handleChange}
+              />
             </label>
             <label htmlFor="expiration">
               Expiration Date
               <select
                 name="months"
                 id="months"
-                value={months}
-                onChange={(e) => setMonths(e.target.value)}
+                value={formData.months}
+                onChange={handleChange}
               >
                 {[...Array(12).keys()].map((index) => {
                   console.log(index);
@@ -59,7 +90,7 @@ const Checkout = () => {
                   );
                 })}
               </select>
-              <select name="years" id="years">
+              <select name="years" id="years" onChange={handleChange}>
                 <option value="2024">2024</option>
                 <option value="2024">2025</option>
                 <option value="2024">2026</option>
@@ -69,7 +100,8 @@ const Checkout = () => {
               </select>
             </label>
             <label className="securityLabel">
-              Security Code <input type="text" className="security" />
+              Security Code{" "}
+              <input type="text" className="security" onChange={handleChange} />
             </label>
             <button className="orderButton">Place Order</button>
           </div>

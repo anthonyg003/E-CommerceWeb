@@ -30,9 +30,9 @@ const CartItemCard = ({
           className="cart-img"
         />
       </div>
-      <div>
+      <div className="cartContent">
         <h3>{productItem.title}</h3>
-        <p>Quantity: {quantity}</p>
+        <p className="cartFeature">Quantity: {quantity}</p>
         <select value={quantity} onChange={handleQuantityChange}>
           {[...Array(30).keys()].map((index) => (
             <option key={index} value={index + 1}>
@@ -40,9 +40,15 @@ const CartItemCard = ({
             </option>
           ))}
         </select>
-        <p>Price: {productItem.price}</p>
-        <button onClick={handleIncrement}>+</button>
-        <button onClick={handleDecrement}>-</button>
+        <p className="cartFeature">Price: {productItem.price}</p>
+        <div className="cartButtons">
+          <button onClick={handleIncrement} className="cartButton">
+            +
+          </button>
+          <button onClick={handleDecrement} className="cartButton" id="minus">
+            -
+          </button>
+        </div>
       </div>
     </div>
   );

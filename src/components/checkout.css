@@ -37,5 +37,11 @@ select {
   height: 30px;
   border: 10px none;
   border-radius: 5px;
-  background-color: lightgreen;
+  color: white;
+  background-color: #000;
+  cursor: pointer;
+}
+
+.orderButton:hover {
+  opacity: 0.7;
 }

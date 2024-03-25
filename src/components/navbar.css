@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 .nav-container {
   list-style-type: none;
@@ -23,4 +24,16 @@
 
 .nav-link:hover {
   background-color: black;
+}
+
+.logOut {
+  color: white;
+  background-color: #333;
+  width: 70px;
+  cursor: pointer;
+  border: none;
+}
+
+.logOut:hover {
+  background-color: #000;
 }

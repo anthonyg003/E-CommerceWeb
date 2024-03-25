@@ -23,7 +23,9 @@ const NavBar = ({ token, setToken }) => {
                 <Link className="nav-link" to="/cart">
                   Cart
                 </Link>
-                <button onClick={handleLogOut}>Log Out</button>
+                <button onClick={handleLogOut} className="logOut">
+                  Log Out
+                </button>
               </>
             ) : (
               <>
