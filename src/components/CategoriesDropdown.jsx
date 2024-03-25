@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const CategoriesDropdown = ({ selectedOption, setSelectedOption }) => {
-  // const [selectedOption, setSelectedOption] = useState("");
   const navigate = useNavigate();
   const options = [
     "all products",
@@ -23,8 +22,8 @@ const CategoriesDropdown = ({ selectedOption, setSelectedOption }) => {
   };
 
   return (
-    <div>
-      <label> Choose Category</label>
+    <div className="category">
+      <h3> Choose Category</h3>
       <select value={selectedOption} onChange={handleChange} id="category">
         {options.map((option, index) => {
           return (

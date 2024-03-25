@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CartItemCard from "./CartItemCard";
 import { useNavigate } from "react-router-dom";
+import "./cart.css";
 import {
   addToCart,
   removeCartItem,
@@ -50,27 +51,39 @@ const Cart = ({ cart, products, setCart }) => {
   }, [cart, products]);
 
   return (
-    <div>
-      <h1>Cart</h1>
-      <p>Total Items: {totalItems}</p>
-      {cart.map((item) => {
-        const productItem = getAllItemDetails(item);
+    <div className="cartContainer">
+      <h1 className="title">Cart</h1>
+      <div className="cartItem">
+        {cart.map((item) => {
+          const productItem = getAllItemDetails(item);
 
-        return (
-          productItem && (
-            <CartItemCard
-              productItem={productItem}
-              key={item.productId}
-              quantity={item.quantity}
-              onIncrement={handleIncrement}
-              onDecrement={handleDecrement}
-              onEdit={handleEditQuantity}
-            />
-          )
-        );
-      })}
-      <p>Subtotal: {isNaN(subTotal) ? "$0.00" : `$${subTotal.toFixed(2)}`}</p>
-      <button onClick={handleCheckout}>Proceed To Checkout</button>
+          return (
+            productItem && (
+              <div className="cartItemCard">
+                <CartItemCard
+                  productItem={productItem}
+                  key={item.productId}
+                  quantity={item.quantity}
+                  onIncrement={handleIncrement}
+                  onDecrement={handleDecrement}
+                  onEdit={handleEditQuantity}
+                />
+              </div>
+            )
+          );
+        })}
+      </div>
+      <div className="cartCheckout">
+        <div className="cartCheckoutContent">
+          <p className="totalItems">Total Items: {totalItems}</p>
+          <p className="subtotal">
+            Subtotal: {isNaN(subTotal) ? "$0.00" : `$${subTotal.toFixed(2)}`}
+          </p>
+          <button onClick={handleCheckout} className="checkOutButton">
+            Proceed To Checkout
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

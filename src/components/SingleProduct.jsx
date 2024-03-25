@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import ProductCardItem from "./ProductCardItem";
 import "./singleProduct.css";
 
-const SingleProduct = ({ cart, setCart }) => {
+const SingleProduct = ({ cart, setCart, token }) => {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
 
@@ -27,6 +27,7 @@ const SingleProduct = ({ cart, setCart }) => {
         isSingleProduct
         cart={cart}
         setCart={setCart}
+        token={token}
       />
     </div>
   );

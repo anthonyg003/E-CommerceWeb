@@ -11,6 +11,7 @@ const Categories = ({
   cart,
   selectedOption,
   setSelectedOption,
+  token,
 }) => {
   const { category } = useParams();
 
@@ -39,19 +40,29 @@ const Categories = ({
           product={product}
           setCart={setCart}
           cart={cart}
+          token={token}
         />
       );
     }
   });
   return (
     <>
-      <h1>{capatalized}</h1>
-      <button onClick={handleDecending}>Low to High</button>
-      <button onClick={handleAscending}>High to Low</button>
-      <CategoriesDropdown
-        selectedOption={selectedOption}
-        setSelectedOption={setSelectedOption}
-      />
+      <h1 className="title">{capatalized}</h1>
+      <div className="sort">
+        <h3>Sort By </h3>
+        <button onClick={handleDecending} className="sortButton">
+          Low to High
+        </button>
+        <button onClick={handleAscending} className="sortButton">
+          High to Low
+        </button>
+      </div>
+      <div className="dropdown">
+        <CategoriesDropdown
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+        />
+      </div>
       <div className="products">{filteredCategories}</div>{" "}
     </>
   );
