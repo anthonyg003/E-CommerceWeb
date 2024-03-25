@@ -14,6 +14,16 @@ Add items to a cart
 Edit your cart
 Check out page to place order
 
+## User Logins
+username: johnd
+password: m38rmF$
+
+username: mor_2314
+password: 83r5^_
+
+username: kevinryan
+password: kev02937@
+
 ## Technologies
 
 Front-end: React js
